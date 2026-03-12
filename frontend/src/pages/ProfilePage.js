@@ -23,7 +23,7 @@ const ProfilePage = ({ onBack }) => {
   const fetchBlockedList = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/safety/blocked', {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/safety/blocked', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -35,7 +35,7 @@ const ProfilePage = ({ onBack }) => {
   const fetchApprovedList = useCallback(async () => {
     setLoading(true);
     try {
-      const res = await fetch('/api/safety/permissions', {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/safety/permissions', {
         headers: { Authorization: `Bearer ${token}` }
       });
       const data = await res.json();
@@ -53,7 +53,7 @@ const ProfilePage = ({ onBack }) => {
 
   const handleUnblock = async (email) => {
     try {
-      await fetch('/api/safety/unblock', {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/safety/unblock', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ targetEmail: email }),
@@ -66,7 +66,7 @@ const ProfilePage = ({ onBack }) => {
   const handleRevokePermission = async (email) => {
     if (!window.confirm(`Revoke call permission for ${email}?\nThey will need to send a new request to call you.`)) return;
     try {
-      await fetch('/api/safety/permissions/revoke', {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/safety/permissions/revoke', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ targetEmail: email }),
@@ -79,7 +79,7 @@ const ProfilePage = ({ onBack }) => {
   const handleBlockFromApproved = async (email) => {
     if (!window.confirm(`Block ${email}?\nThis also revokes their call permission.`)) return;
     blockUser(email);
-    await fetch('/api/safety/block', {
+    await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/safety/block', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ targetEmail: email }),
