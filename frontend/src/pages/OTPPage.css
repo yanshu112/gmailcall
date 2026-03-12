@@ -1,0 +1,97 @@
+/* OTPPage.css */
+.otp-page { flex-direction: column; }
+
+.otp-container {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.logo-name {
+  font-size: 24px;
+  font-weight: 700;
+  background: var(--grad-brand);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.otp-card { padding: 28px 24px; }
+
+.otp-inputs {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+}
+
+.otp-input {
+  width: 52px; height: 60px;
+  background: var(--bg-overlay);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  text-align: center;
+  font-size: 24px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--text-primary);
+  outline: none;
+  transition: var(--transition);
+  caret-color: var(--cyan);
+}
+
+.otp-input:focus {
+  border-color: var(--cyan);
+  background: var(--bg-elevated);
+  box-shadow: 0 0 0 3px var(--cyan-dim);
+}
+
+.otp-input.filled {
+  border-color: rgba(0, 212, 255, 0.4);
+  background: rgba(0, 212, 255, 0.05);
+  color: var(--cyan);
+}
+
+.otp-input.error {
+  border-color: var(--red) !important;
+  color: var(--red) !important;
+  animation: shake 0.3s ease;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+.otp-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--cyan);
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+  font-family: var(--font-sans);
+  transition: var(--transition);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.btn-link:disabled { color: var(--text-muted); cursor: not-allowed; text-decoration: none; }
+.btn-link:hover:not(:disabled) { color: #fff; }
+
+@media (max-width: 420px) {
+  .otp-input { width: 44px; height: 52px; font-size: 20px; }
+  .otp-inputs { gap: 8px; }
+}

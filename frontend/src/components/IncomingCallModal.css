@@ -1,0 +1,133 @@
+/* IncomingCallModal.css */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(6, 6, 13, 0.8);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.incoming-modal {
+  width: 100%;
+  max-width: 340px;
+  border-radius: 24px;
+  padding: 36px 28px;
+  text-align: center;
+  border-color: rgba(16, 185, 129, 0.3);
+  box-shadow: 0 0 60px rgba(16, 185, 129, 0.15), var(--shadow-lg);
+}
+
+/* Ripple */
+.ripple-wrap {
+  position: relative;
+  width: 96px; height: 96px;
+  margin: 0 auto 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ripple {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(16, 185, 129, 0.3);
+  animation: ripple 2s ease-out infinite;
+}
+.r2 { animation-delay: 0.5s; }
+.r3 { animation-delay: 1s; }
+
+.caller-avatar-incoming {
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 800;
+  color: #fff;
+  position: relative;
+  z-index: 1;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+  animation: callPulse 1.5s ease infinite;
+}
+
+.incoming-info {
+  margin-bottom: 32px;
+}
+
+.incoming-label {
+  font-size: 12px;
+  color: var(--green);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.incoming-caller {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.incoming-email {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+}
+
+.incoming-timer {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+}
+
+.incoming-actions {
+  display: flex;
+  justify-content: center;
+  gap: 48px;
+}
+
+.action-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 64px; height: 64px;
+  border-radius: 50%;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-btn.reject {
+  background: var(--red);
+  box-shadow: 0 4px 16px rgba(239, 68, 68, 0.4);
+}
+.action-btn.reject:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(239, 68, 68, 0.6); }
+
+.action-btn.accept {
+  background: var(--green);
+  box-shadow: 0 4px 16px rgba(16, 185, 129, 0.4);
+  animation: callPulse 1.5s ease infinite;
+}
+.action-btn.accept:hover { transform: scale(1.1); box-shadow: 0 8px 32px rgba(16, 185, 129, 0.6); }
+
+.action-label {
+  font-size: 12px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}

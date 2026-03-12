@@ -1,0 +1,60 @@
+/* RequestNotificationToast.css */
+.req-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 2000;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 18px;
+  border-radius: var(--radius-lg);
+  max-width: 360px;
+  width: calc(100vw - 48px);
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: blur(20px);
+}
+
+.toast-accept {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.35);
+}
+
+.toast-reject {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.toast-icon { font-size: 20px; flex-shrink: 0; margin-top: 1px; }
+
+.toast-body { flex: 1; }
+
+.toast-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 3px;
+}
+
+.toast-msg {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px;
+  flex-shrink: 0;
+  line-height: 1;
+  transition: var(--transition);
+}
+.toast-close:hover { color: var(--text-primary); }
+
+@media (max-width: 480px) {
+  .req-toast { bottom: 16px; right: 16px; width: calc(100vw - 32px); }
+}
