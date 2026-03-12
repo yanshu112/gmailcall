@@ -23,8 +23,19 @@ const app = express();
 const server = http.createServer(app);
 
 const FRONTEND_URL = process.env.FRONTEND_URL || 'http://localhost:3000';
+app.use(cors({
+  origin: function(origin, callback) {
+    console.log(origin);
+    if (!origin || FRONTEND_URL.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("CORS not allowed"));
+    }
+  },
+  methods: ['GET', 'POST', 'DELETE'],
+  credentials: true
+}));
 
-app.use(cors({ origin: FRONTEND_URL, methods: ['GET', 'POST', 'DELETE'], credentials: true }));
 app.use(express.json());
 
 const io = new Server(server, {
