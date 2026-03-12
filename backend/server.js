@@ -28,7 +28,14 @@ app.use(cors({ origin: FRONTEND_URL, methods: ['GET', 'POST', 'DELETE'], credent
 app.use(express.json());
 
 const io = new Server(server, {
-  cors: { origin: FRONTEND_URL, methods: ['GET', 'POST'], credentials: true },
+  cors: {
+    origin: function(origin, callback) {
+      if (!origin || origin.includes('vercel.app') || origin === FRONTEND_URL) {
+        callback(null, true);
+      } else {
+        callback(new Error('CORS'));
+      }
+    }, methods: ['GET', 'POST'], credentials: true },
 });
 
 // Map<email, socketId>
