@@ -22,7 +22,7 @@ const LoginPage = ({ onOTPSent }) => {
 
     setLoading(true);
     try {
-      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/auth/request-otp', {
+      const res = await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/auth/request-otp`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: email.toLowerCase().trim() }),

@@ -57,7 +57,7 @@ const DashboardPage = ({ onProfileClick }) => {
       blockUser(target); // via socket
       // Also persist via REST
       const token = localStorage.getItem('gc_token');
-      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/safety/block', {
+      await fetch(`${process.env.REACT_APP_BACKEND_URL}/api/safety/block`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
         body: JSON.stringify({ targetEmail: target }),
